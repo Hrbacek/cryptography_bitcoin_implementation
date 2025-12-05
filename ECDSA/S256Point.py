@@ -42,7 +42,6 @@ class S256Point(Point):
         return hash160(self.sec(compressed))
 
     def address(self, compressed=True, testnet=False):
-        '''Returns the address string'''
         h160 = self.hash160(compressed)
         if testnet:
             prefix = b'\x6f'

@@ -17,7 +17,7 @@ class PrivateKey:
         return '{:x}'.format(self.secret).zfill(64)
     
     def sign(self, z):
-        k = randint(0, N)
+        k = self.deterministic_k(z)
         r = (k * S256Point(gx, gy)).x.num
         k_inv = pow(k, N - 2, N)
         s = (z + r * self.secret) * k_inv % N
